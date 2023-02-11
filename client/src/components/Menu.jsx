@@ -20,9 +20,9 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 
 const Container = styled.div`
-  flex: 1;
-  background-color: #202020;
+  flex: 1.5;
   height: 100vh;
+  background-color: #202020;
   color: #fff;
   position: sticky;
   top: 0;
@@ -84,8 +84,7 @@ const Menu = () => {
   return (
     <>
       <Container
-        className='scroll-smooth scroll-mx-px
-        snap-start snap-normal snap-both touch-auto'
+        className='overflow-y-auto'
       >
         <Wrapper>
           <Link
@@ -93,7 +92,7 @@ const Menu = () => {
           >
             <Logo
               className='flex justify-center
-              items-center border py-2 px-6
+              items-center border py-3 px-2
               rounded-2xl border-rose-600 ring-1
               ring-orange-700 brightness-100'
             >
@@ -178,6 +177,9 @@ const Menu = () => {
             <SettingsBrightnessOutlinedIcon />
             Mode
           </Item>
+          <Title>Best of BaoBao</Title>
+          <Title>Best of BaoBao</Title>
+          <Title>Best of BaoBao</Title>
         </Wrapper>
       </Container>
     </>
