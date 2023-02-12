@@ -22,10 +22,11 @@ import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightne
 const Container = styled.div`
   flex: 1.2;
   height: 100vh;
-  background-color: #202020;
-  color: #fff;
+  background-color: ${({ theme }) => theme.bgLighter};
+  color: ${({ theme }) => theme.text};
   position: sticky;
   top: 0;
+  transition: all .3s ease-in-out;
 `;
 
 const Wrapper = styled.div`
@@ -51,11 +52,17 @@ const Item = styled.div`
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
+
+  &:hover {
+    border-radius: 5px;
+    background-color: ${({ theme }) => theme.soft};
+  }
 `;
 
 const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px;
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
 const Login = styled.div``;
@@ -80,7 +87,7 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Menu = () => {
+const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <>
       <Container
@@ -89,6 +96,7 @@ const Menu = () => {
         <Wrapper>
           <Link
             to="/"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
             <Logo>
               <Img
@@ -137,27 +145,39 @@ const Menu = () => {
           <Hr />
           <Title>Best of BaoBao</Title>
           <Item>
-            <LibraryMusicOutlinedIcon />
+            <LibraryMusicOutlinedIcon
+              className='text-red-700'
+            />
             Music
           </Item>
           <Item>
-            <SportsBasketballOutlinedIcon />
+            <SportsBasketballOutlinedIcon
+              className='text-red-700'
+            />
             Sports
           </Item>
           <Item>
-            <SportsEsportsOutlinedIcon />
+            <SportsEsportsOutlinedIcon
+              className='text-red-700'
+            />
             Gaming
           </Item>
           <Item>
-            <MovieOutlinedIcon />
+            <MovieOutlinedIcon
+              className='text-red-700'
+            />
             Movies
           </Item>
           <Item>
-            <ArticleOutlinedIcon />
+            <ArticleOutlinedIcon
+              className='text-red-700'
+            />
             News
           </Item>
           <Item>
-            <LiveTvOutlinedIcon />
+            <LiveTvOutlinedIcon
+              className='text-red-700'
+            />
             Live
           </Item>
           <Hr />
@@ -173,13 +193,17 @@ const Menu = () => {
             <HelpOutlineOutlinedIcon />
             Help
           </Item>
-          <Item>
+          <Item
+            onClick={() =>
+              setDarkMode(!darkMode)
+            }
+          >
             <SettingsBrightnessOutlinedIcon />
-            Mode
+            {darkMode ? "Light" : "Dark"} Mode
           </Item>
-          <Title>Best of BaoBao</Title>
-          <Title>Best of BaoBao</Title>
-          <Title>Best of BaoBao</Title>
+          <Title>
+            © 2023 Google LLC
+          </Title>
         </Wrapper>
       </Container>
     </>
