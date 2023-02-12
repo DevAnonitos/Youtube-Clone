@@ -42,9 +42,14 @@ function App() {
                 fallback={
                   <div
                     className='flex justify-center
-                    items-center min-h-screen text-3xl'
+                    items-center min-h-screen text-3xl text-pink-700'
                   >
-                    <CircularProgress />
+                    <CircularProgress
+                      size={50}
+                      className='mr-2'
+                      color="inherit"
+                    />
+                    Loading....
                   </div>
                 }
               >

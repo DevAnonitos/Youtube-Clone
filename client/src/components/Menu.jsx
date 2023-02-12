@@ -20,7 +20,7 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 
 const Container = styled.div`
-  flex: 1.5;
+  flex: 1.2;
   height: 100vh;
   background-color: #202020;
   color: #fff;
@@ -70,7 +70,7 @@ const Button = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 `;
 
 const Title = styled.h2`
@@ -90,17 +90,17 @@ const Menu = () => {
           <Link
             to="/"
           >
-            <Logo
-              className='flex justify-center
-              items-center border py-3 px-2
-              rounded-2xl border-rose-600 ring-1
-              ring-orange-700 brightness-100'
-            >
+            <Logo>
               <Img
                 src={LogoYTB}
                 className='brightness-200'
               />
-              YoutubeClone
+              <h1
+                className='text-lg ml-2 text-transparent
+                bg-clip-text bg-gradient-to-br from-pink-400 to-red-600'
+              >
+                YoutubeClone
+              </h1>
             </Logo>
           </Link>
           <Item>
