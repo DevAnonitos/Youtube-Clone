@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
 const HomeView = lazy(() => delayView(import('./pages/Home')));
-const SignInView = lazy(() =>delayView(import('./pages/Video')));
+const SignInView = lazy(() =>delayView(import('./pages/SignIn')));
 const VideoView = lazy(() => delayView(import('./pages/Video')));
 
 const Container = styled.div`
