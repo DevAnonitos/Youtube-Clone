@@ -3,12 +3,17 @@ import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link } from "react-router-dom";
+import AddAlertIcon from '@mui/icons-material/AddAlert';
+import SettingsIcon from '@mui/icons-material/Settings';
+import EmergencyRecordingIcon from '@mui/icons-material/EmergencyRecording';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
 
 const Container = styled.div`
   position: sticky;
   top: 0;
   background-color: ${({ theme }) => theme.bgLighter};
-  height: 56px;
+  height: 65px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 `;
 
@@ -21,6 +26,14 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+const Items = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 7.5px 0px;
+`;
+
 const Search = styled.div`
   width: 40%;
   position: absolute;
@@ -30,10 +43,11 @@ const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 2px 5px;
   border: 1px solid #ccc;
   border-radius: 20px;
 `;
+
 
 const Input = styled.input`
   display: flex;
@@ -61,9 +75,46 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Search>
-          <Input placeholder="Search........" />
-          <SearchOutlinedIcon />
+          <Input placeholder="Search for your video...." />
+          <Items>
+            <SearchOutlinedIcon />
+          </Items>
         </Search>
+        <Items
+          className="mx-2"
+        >
+          <Tooltip title="Live">
+            <EmergencyRecordingIcon
+              className="text-rose-600"
+            />
+          </Tooltip>
+        </Items>
+        <Items
+          className="mx-2"
+        >
+          <Tooltip
+            title='Notifications'
+            TransitionComponent={Fade}
+            TransitionProps={{ timeout: 600 }}
+          >
+            <AddAlertIcon
+              className="text-rose-600"
+            />
+          </Tooltip>
+        </Items>
+        <Items
+          className="ml-2 mr-4"
+        >
+          <Tooltip
+            title='Settings'
+            TransitionComponent={Fade}
+            TransitionProps={{ timeout: 600 }}
+          >
+            <SettingsIcon
+              className="text-rose-600"
+            />
+          </Tooltip>
+        </Items>
         <Link to="signin" style={{ textDecoration: "none" }}>
           <Button>
             <AccountCircleOutlinedIcon />
