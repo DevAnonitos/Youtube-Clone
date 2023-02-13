@@ -105,7 +105,11 @@ const Home = () => {
             onClick={handleClick}
           />
         </Stack>
-        <div className='flex flex-wrap justify-between mt-10'>
+        {/* ==========================CardList============================= */}
+        <div
+          className='flex flex-wrap justify-between
+          mt-10 scroll-smooth'
+        >
           <Card />
           <Card />
           <Card />
