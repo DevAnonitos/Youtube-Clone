@@ -106,7 +106,7 @@ const Subscribe = styled.button`
 
 const Video = () => {
   return (
-    <Container className="mt-5">
+    <Container className="mt-2">
       <Content>
         <VideoWrapper>
           <iframe
@@ -140,11 +140,11 @@ const Video = () => {
         <Hr />
         <Channel>
           <ChannelInfo>
-            <Image src="https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo" />
+            <Image src="https://gstatic.gvn360.com/2022/11/Mat-na_-13-1068x580.jpg" />
             <ChannelDetail>
               <ChannelName>DevTol</ChannelName>
               <ChannelCounter>200K subscribers</ChannelCounter>
-              <Description>
+              <Description className="border-2 py-6 px-4 rounded-xl">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Doloribus laborum delectus unde quaerat dolore culpa sit aliquam
                 at. Vitae facere ipsum totam ratione exercitationem. Suscipit
