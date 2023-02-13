@@ -104,6 +104,17 @@ const Subscribe = styled.button`
   cursor: pointer;
 `;
 
+const JoinChannel = styled.button`
+  background-color: #dcdde1;
+  font-weight: 500;
+  color: #000000;
+  border: none;
+  border-radius: 20px;
+  height: max-content;
+  padding: 10px 20px;
+  cursor: pointer;
+`;
+
 const Video = () => {
   return (
     <Container className="mt-2">
@@ -114,9 +125,8 @@ const Video = () => {
             height="550"
             src="https://www.youtube.com/embed/k3Vfj-e1Ma4"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </VideoWrapper>
         <Title>Test Video</Title>
@@ -152,6 +162,7 @@ const Video = () => {
               </Description>
             </ChannelDetail>
           </ChannelInfo>
+          <JoinChannel className="mx-4">Join</JoinChannel>
           <Subscribe>SUBSCRIBE</Subscribe>
         </Channel>
         <Hr />
