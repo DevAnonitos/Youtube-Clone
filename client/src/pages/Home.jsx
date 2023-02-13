@@ -21,77 +21,92 @@ const Home = () => {
       <Container>
         <Stack direction="row" spacing={1}>
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Home"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Game"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Cook"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Life Styles"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Movies"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Action"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Cartoon"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Live"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Market"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Survival"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Education"
             variant="outlined"
             onClick={handleClick}
           />
           <Chip
-            label="Clickable"
+            color="primary"
+            label="Commerce"
             variant="outlined"
             onClick={handleClick}
           />
            <Chip
-            label="Clickable"
+            color="primary"
+            label="Funny"
             variant="outlined"
             onClick={handleClick}
           />
            <Chip
-            label="Clickable"
+            color="primary"
+            label="Short video"
             variant="outlined"
             onClick={handleClick}
           />
         </Stack>
         <div className='flex flex-wrap justify-between mt-10'>
+          <Card />
           <Card />
           <Card />
           <Card />
