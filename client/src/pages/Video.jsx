@@ -123,16 +123,16 @@ const Video = () => {
         <Details>
           <Info>7,948,154 views • Jun 22, 2022</Info>
           <Buttons>
-            <Button>
+            <Button className="border-2	px-4 py-2 rounded-2xl">
               <ThumbUpOutlinedIcon /> 123
             </Button>
-            <Button>
+            <Button className="border-2	px-4 py-2 rounded-2xl">
               <ThumbDownOffAltOutlinedIcon /> Dislike
             </Button>
-            <Button>
+            <Button className="border-2	px-4 py-2 rounded-2xl">
               <ReplyOutlinedIcon /> Share
             </Button>
-            <Button>
+            <Button className="border-2	px-4 py-2 rounded-2xl">
               <AddTaskOutlinedIcon /> Save
             </Button>
           </Buttons>
