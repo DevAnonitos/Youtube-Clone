@@ -18,5 +18,5 @@ const connect = () => {
 
 app.listen(8000, () => {
     connect();
-    console.log("Connected to server");
+    console.log(`Server has started on port http://localhost:8000`)
 });
