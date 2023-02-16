@@ -18,6 +18,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 
 const Container = styled.div`
   flex: 1.2;
@@ -180,6 +181,20 @@ const Menu = ({ darkMode, setDarkMode }) => {
               className='text-red-700'
             />
             Live
+          </Item>
+          <Hr />
+          <Item>
+            <CreateNewFolderIcon  className='text-red-600' />
+            Creator Studio
+          </Item>
+          <Item>
+
+          </Item>
+          <Item>
+
+          </Item>
+          <Item>
+
           </Item>
           <Hr />
           <Item>
