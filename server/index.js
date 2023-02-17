@@ -4,10 +4,18 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
 import videoRoutes from "./routes/videos.js";
-
+import authRoutes from "./routes/auth.js";
+import rateLimit from 'express-rate-limit';
 
 const app = express();
 dotenv.config();
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
 
 const connect = () => {
     mongoose.set('strictQuery', true);
@@ -20,7 +28,11 @@ const connect = () => {
     })
 }
 
-app.use("/api/users", userRoutes)
+app.use("/api", limiter, authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/videos", videoRoutes);
+app.use("/api/comments", commentRoutes);
+
 
 app.listen(8000, () => {
     connect();
