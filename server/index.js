@@ -17,6 +17,16 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
+const logger = (req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+};
+
+authRoutes.use(logger);
+userRoutes.use(logger);
+videoRoutes.use(logger);
+commentRoutes.use(logger);
+
 const connect = () => {
     mongoose.set('strictQuery', true);
     mongoose.connect(process.env.MONGO)
