@@ -2,6 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/users.js";
+import commentRoutes from "./routes/comments.js";
+import videoRoutes from "./routes/videos.js";
+
 
 const app = express();
 dotenv.config();
