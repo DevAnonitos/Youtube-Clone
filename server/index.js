@@ -38,7 +38,8 @@ const connect = () => {
     })
 }
 
-app.use("/api", limiter, authRoutes);
+app.use(express.json());
+app.use("/api/auth", limiter, authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
