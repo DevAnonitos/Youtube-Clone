@@ -6,7 +6,7 @@ const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
 
-export const signUp = async (req, res) => {
+export const signUp = async (req, res, next) => {
 
     console.log(req.body);
 
@@ -22,6 +22,7 @@ export const signUp = async (req, res) => {
         res.status(200).send("User has been created!");
     } catch (error) {
         console.log(error.message);
+        next(err);
     }
 
 };
