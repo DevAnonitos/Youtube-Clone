@@ -55,8 +55,15 @@ app.get('/', (req, res) => {
     clearInterval(id);
 });
 
-app.use(express.json());
+// Use ExpressJs
 app.use(cookieParser());
+app.use(express.json({limit: "50mb"}));
+app.use(express.urlencoded(
+    {   limit: '50mb',
+        extended: true,
+        parameterLimit: 50000,
+    }
+));
 app.use("/api/auth", limiter, authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
