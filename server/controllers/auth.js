@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import { createError } from "../error.js";
+import jwt from "jsonwebtoken";
 
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
@@ -22,8 +23,7 @@ export const signUp = async (req, res, next) => {
 
         res.status(200).send("User has been created! 😘");
     } catch (error) {
-        console.log(error.message);
-        next(err);
+        next(error);
     }
 };
 
@@ -33,10 +33,18 @@ export const signIn = async (req, res, next) => {
 
     try {
         const user = await User.findOne({name: req.body.name});
+        if (!user) return next(createError(404, "User not found 🥲"));
 
-        if (!user) return next(createError(404, "User not found 🥲"))
+        const isCorrect = await bcrypt.compare(req.body.password, user.password);
+        if(!isCorrect) return next(createError(400, "Wrong Credentials 😃"));
+
+        const token = jwt.sign({id:user._id}, process.env.JWT);
+
+        res.cookie("Access-Token", token, {
+            httpOnly: true
+        }).status(200)
+        .json(user);
     } catch (error) {
-        console.log(error.message);
-        next(err);
+        next(error);
     }
 };
