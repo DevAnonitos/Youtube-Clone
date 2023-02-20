@@ -7,6 +7,7 @@ import videoRoutes from "./routes/videos.js";
 import authRoutes from "./routes/auth.js";
 import rateLimit from 'express-rate-limit';
 import cookieParser from "cookie-parser";
+import EventEmitter from "events";
 
 
 const app = express();
@@ -19,6 +20,19 @@ const limiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
+
+const myEmitter = new EventEmitter();
+
+// Set the maximum number of listeners to 20
+myEmitter.setMaxListeners(20);
+
+// Register 15 listeners for the 'my-event' event
+for (let i = 0; i < 15; i++) {
+  myEmitter.on('my-event', () => {
+    console.log('Listener called');
+  });
+}
+
 const logger = (req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
@@ -28,6 +42,8 @@ authRoutes.use(logger);
 userRoutes.use(logger);
 videoRoutes.use(logger);
 commentRoutes.use(logger);
+
+
 
 const connect = () => {
     mongoose.set('strictQuery', true);

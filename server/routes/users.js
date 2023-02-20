@@ -1,8 +1,29 @@
 import express from "express";
-import { test } from "../controllers/user.js";
+import {
+    update, deleteUser,
+    getUser, subscribe,
+    unsubscribe, like, dislike
+} from "../controllers/user.js";
 
 const router = express.Router();
 
-router.get("/test", test);
+// Update User
+router.put("/:id", update);
+
+// Delete user
+router.delete("/:id", deleteUser);
+// Get a user
+router.get("/:id", getUser);
+// Subscribe a user
+router.put("/sub/:id", subscribe);
+// unsubscribe a user
+router.put("/unsub/:id", unsubscribe);
+// Like a video
+router.put("/like/:videoId", like);
+// Dislike a video
+router.put("/dislike/:videoId", dislike);
+
+
+
 
 export default router;
