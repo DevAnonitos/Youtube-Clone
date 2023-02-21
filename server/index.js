@@ -43,8 +43,6 @@ userRoutes.use(logger);
 videoRoutes.use(logger);
 commentRoutes.use(logger);
 
-
-
 const connect = () => {
     mongoose.set('strictQuery', true);
     mongoose.connect(process.env.MONGO)
