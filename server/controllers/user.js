@@ -24,27 +24,62 @@ export const update = async (req, res, next) => {
     }
 };
 
-export const deleteUser = (req, res, next) => {
-    res.json("It's successfull")
+export const deleteUser = async (req, res, next) => {
+    if(req.params.id === req.user.id) {
+        // toDO
+        try {
+            const updateUser =
+                await User.findByIdAndDelete(req.params.id);
+                res.status(200).json("User has been deleted!");
+        } catch (error) {
+            next(error);
+        }
+    } else {
+        return next(createError(403, "You can update only your account"));
+    }
 };
 
-export const getUser = (req, res, next) => {
-    res.json("It's successfull")
+export const getUser = async (req, res, next) => {
+
+    try {
+
+        const user = await User.findById(req.params.id);
+        res.status(200).json(user);
+
+    } catch (error) {
+        next(error);
+    }
 };
 
-export const subscribe = (req, res, next) => {
-    res.json("It's successfull")
+export const subscribe = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
 };
 
-export const unsubscribe = (req, res, next) => {
-    res.json("It's successfull")
+export const unsubscribe = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
 };
 
-export const like = (req, res, next) => {
-    res.json("It's successfull")
+export const like = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
 };
 
-export const dislike = (req, res, next) => {
-    res.json("It's successfull")
+export const dislike = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
 };
 
