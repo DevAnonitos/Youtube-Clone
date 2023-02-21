@@ -1,13 +1,18 @@
 import { createError } from "../error.js";
 import User from "../models/User.js";
 
-export const update = (req, res, next) => {
+export const update = async (req, res, next) => {
     if(req.params.id === req.user.id) {
         // toDO
         try {
-
+            const updateUser =
+                await User.findByIdAndUpdate(req.params.id, {
+                    $set: res.body
+                });
+                res.status(200).json(updateUser);
         } catch (error) {
-            
+            next(error);
+            console.log(error);
         }
     } else {
         return next(createError(403, "You can update only your account"));
