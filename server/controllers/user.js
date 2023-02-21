@@ -6,13 +6,18 @@ export const update = async (req, res, next) => {
         // toDO
         try {
             const updateUser =
-                await User.findByIdAndUpdate(req.params.id, {
-                    $set: res.body
-                });
+                await User.findByIdAndUpdate(req.params.id,
+                    {
+                        $set:req.body
+                    },
+                    {
+                        new: true,
+                    }
+                )
                 res.status(200).json(updateUser);
+                res.json("It's successfull");
         } catch (error) {
             next(error);
-            console.log(error);
         }
     } else {
         return next(createError(403, "You can update only your account"));
