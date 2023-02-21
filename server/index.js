@@ -8,7 +8,8 @@ import authRoutes from "./routes/auth.js";
 import rateLimit from 'express-rate-limit';
 import cookieParser from "cookie-parser";
 import EventEmitter from "events";
-
+import path from "path";
+import ejs from "ejs";
 
 const app = express();
 dotenv.config();
@@ -55,18 +56,7 @@ const connect = () => {
 }
 
 app.get('/', (req, res) => {
-    // Start profiling
-    const start = Date.now();
-    const id = setInterval(() => {
-      if (Date.now() - start > 100) {
-        clearInterval(id);
-      }
-    }, 0);
-
-    res.send("Hello World!");
-
-    // Stop profiling
-    clearInterval(id);
+    res.send("Hello word")
 });
 
 // Use ExpressJs
