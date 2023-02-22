@@ -28,6 +28,8 @@ export const updateVideo = async (req, res, next) => {
                 {new: true}
             );
             res.status(200).json(updateVideo);
+        } else {
+            return next(createError(403, "You can update only your video!"));
         }
     } catch (error) {
         next(error);
