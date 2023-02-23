@@ -8,8 +8,6 @@ import authRoutes from "./routes/auth.js";
 import rateLimit from 'express-rate-limit';
 import cookieParser from "cookie-parser";
 import EventEmitter from "events";
-import path from "path";
-import ejs from "ejs";
 
 const app = express();
 dotenv.config();
@@ -20,7 +18,6 @@ const limiter = rateLimit({
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
-
 
 const myEmitter = new EventEmitter();
 

@@ -39,17 +39,77 @@ export const updateVideo = async (req, res, next) => {
 export const deleteVideo = async (req, res, next) => {
     try {
 
-    } catch (error) {
+        const video = await Video.findById(req.params.id);
 
+        if(!video) return next(createError(404, "Video not found"));
+
+        if(req.user.id === video.userId) {
+            await Video.findByIdAndDelete(req.params.id);
+            res.status(200).json("The video has been deleted!");
+        } else {
+            return next(createError(403, "You can delete only your video!"));
+        }
+
+    } catch (error) {
+        next(error);
     }
 };
 // GetVideo
 export const getVideo = async (req, res, next) => {
     try {
 
-    } catch (error) {
+        const video = await Video.findById(req.params.id);
+        res.status(200).json(video);
 
+    } catch (error) {
+        next(error);
     }
 };
+// addView
+export const addView = async (req, res, next) => {
+    try {
 
+    } catch (error) {
+        next(error);
+    }
+};
+// Random
+export const rand = async (req, res, next) => {
+    try {
 
+    } catch (error) {
+        next(error);
+    }
+};
+// Trend
+export const trend = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
+};
+// Sub
+export const sub = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
+};
+// tag
+export const getByTag = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
+};
+// search
+export const search = async (req, res, next) => {
+    try {
+
+    } catch (error) {
+        next(error);
+    }
+};
