@@ -61,7 +61,9 @@ function App() {
                   <Routes>
                     {/* =================RouterComponents====================== */}
                     <Route path="/">
-                      <Route index element={<HomeView />} />
+                      <Route index element={<HomeView type="random" />} />
+                      <Route path="trends" element={<HomeView type="trend" />} />
+                      <Route path="subscriptions" element={<HomeView type="sub" />} />
                       <Route path="signin" element={<SignInView />} />
                       <Route path="video">
                         <Route path=":id" element={<VideoView />} />
