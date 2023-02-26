@@ -61,7 +61,7 @@ function App() {
                   <Routes>
                     {/* =================RouterComponents====================== */}
                     <Route path="/">
-                      <Route index element={<HomeView type="random" />} />
+                      <Route index element={<HomeView />} />
                       <Route path="trends" element={<HomeView type="trend" />} />
                       <Route path="subscriptions" element={<HomeView type="sub" />} />
                       <Route path="signin" element={<SignInView />} />

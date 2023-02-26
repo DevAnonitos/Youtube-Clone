@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.js";
 import rateLimit from 'express-rate-limit';
 import cookieParser from "cookie-parser";
 import EventEmitter from "events";
+import cors from "cors";
 
 const app = express();
 dotenv.config();

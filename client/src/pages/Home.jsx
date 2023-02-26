@@ -12,13 +12,9 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const Home = ({type}) => {
-  // const [loading, setLoading] = useState(false);
-  // const [videos, setVideos] = useState([]);
+const baseURL = "http://localhost:8000/api/videos/random";
 
-  // useEffect(() => {
-  //   fetchVideos();
-  // }, []);
+const Home = ({type}) => {
 
   return (
     <>
@@ -35,21 +31,7 @@ const Home = ({type}) => {
           className='flex flex-wrap justify-between
           mt-10 scroll-smooth'
         >
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+
             <Card />
         </div>
       </Container>
