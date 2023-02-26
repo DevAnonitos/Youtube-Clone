@@ -52,14 +52,14 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = ({ type }) => {
+const Card = ({ type, video }) => {
   return (
     <>
       <Link to="/video/test" style={{ textDecoration: "none" }}>
         <Container type={type}>
           <Image
             type={type}
-            src="https://cdn.mos.cms.futurecdn.net/CwmiGUSgd6obt2jKHN35Ti.jpg"
+            src={video.imgUrl}
           />
           <Details type={type}>
             <ChannelImage
@@ -67,9 +67,9 @@ const Card = ({ type }) => {
               src="https://gstatic.gvn360.com/2022/11/Mat-na_-13-1068x580.jpg"
             />
             <Texts>
-              <Title>Test Video</Title>
+              <Title>{video.title}</Title>
               <ChannelName>DevTol</ChannelName>
-              <Info>660,908 views • 1 day ago</Info>
+              <Info>{video.views} views • {video.createdAt}</Info>
             </Texts>
           </Details>
         </Container>

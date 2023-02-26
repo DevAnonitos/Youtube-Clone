@@ -12,6 +12,7 @@ import {
     trend
 } from "../controllers/video.js";
 import { verifyToken } from "../verifyToken.js";
+import cors from "cors";
 
 const router = express.Router();
 // AddVideo
