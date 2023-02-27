@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { format } from "timeago.js";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -55,10 +56,10 @@ const Info = styled.div`
 const Card = ({ type, video }) => {
   return (
     <>
-      <Link to="/video/test" style={{ textDecoration: "none" }}>
+      <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
         <Container type={type}>
           <Image
-            type={type}
+          type={type}
             src={video.imgUrl}
           />
           <Details type={type}>
@@ -69,7 +70,7 @@ const Card = ({ type, video }) => {
             <Texts>
               <Title>{video.title}</Title>
               <ChannelName>DevTol</ChannelName>
-              <Info>{video.views} views • {video.createdAt}</Info>
+              <Info>{video.views} views • {format(video.createdAt)}</Info>
             </Texts>
           </Details>
         </Container>

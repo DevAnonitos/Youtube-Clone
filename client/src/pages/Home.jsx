@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import Card from "../components/Card";
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import axios from 'axios';
 
 const Container = styled.div`
   display: flex;
@@ -12,8 +9,8 @@ const Container = styled.div`
 `;
 
 const Home = ({type}) => {
-  const proxyUrl = 'http://localhost:8000'; // replace with your proxy URL
-  const apiUrl = '/api/videos/random'; // replace with your API endpoint
+  const proxyUrl = `http://localhost:8000`;
+  const apiUrl = `/api/videos/${type}`;
   const requestUrl = new URL(apiUrl, proxyUrl);
 
   const [videos, setVideos] = useState([]);
@@ -31,27 +28,15 @@ const Home = ({type}) => {
   }
   useEffect(() => {
     fetchAPI();
-  }, [])
+  }, [type])
 
   return (
     <>
-      <Container>
-        <Stack direction="row" spacing={1}>
-          <Chip
-            color="primary"
-            label="Home"
-            variant="outlined"
-          />
-        </Stack>
+      <Container className='mt-10'>
         {/* ==========================CardList============================= */}
-        <div
-          className='flex flex-wrap justify-between
-          mt-10 scroll-smooth'
-        >
           {videos.map((video) => (
             <Card key={video._id} video={video}/>
           ))}
-        </div>
       </Container>
     </>
   )
