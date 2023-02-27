@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -66,6 +66,15 @@ const Link = styled.span`
 `;
 
 const SignIn = () => {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+
+  };
+
   return (
     <>
       <Container className='mt-10'>
@@ -75,26 +84,31 @@ const SignIn = () => {
           <Input
             placeholder="username"
             className='my-2'
+            onChange={e => setName(e.target.value)}
           />
           <Input
             type="password"
             placeholder="password"
             className='my-2'
+            onChange={e => setPassword(e.target.value)}
           />
-          <Button>Sign in</Button>
+          <Button onClick={handleLogin}>Sign in</Button>
           <Title>or</Title>
           <Input
             placeholder="username"
             className='my-2'
+            onChange={e => setName(e.target.value)}
           />
           <Input
             placeholder="email"
             className='my-2'
+            onChange={e => setEmail(e.target.value)}
           />
           <Input
             type="password"
             placeholder="password"
             className='my-2'
+            onChange={e => setPassword(e.target.value)}
           />
           <Button>Sign up</Button>
         </Wrapper>
