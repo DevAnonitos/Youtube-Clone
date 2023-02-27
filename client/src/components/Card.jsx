@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { format } from "timeago.js";
@@ -54,22 +54,48 @@ const Info = styled.div`
 `;
 
 const Card = ({ type, video }) => {
+
+  const proxyUrl = `http://localhost:8000`;
+  const apiUrl = `/api/users/find/${video.userId}`;
+  const requestUrl = new URL(apiUrl, proxyUrl);
+
+  const [channel, setChannel] = useState({});
+
+  const fetchChannel = async () => {
+    await fetch(requestUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      setChannel(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+  useEffect(() => {
+    fetchChannel();
+  }, [video.userId])
+
   return (
     <>
-      <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
+      <Link
+        to={`/video/${video._id}`}
+        style={{ textDecoration: "none" }}
+      >
         <Container type={type}>
           <Image
-          type={type}
+            type={type}
             src={video.imgUrl}
           />
           <Details type={type}>
             <ChannelImage
               type={type}
-              src="https://gstatic.gvn360.com/2022/11/Mat-na_-13-1068x580.jpg"
+              src={channel.img}
             />
             <Texts>
               <Title>{video.title}</Title>
-              <ChannelName>DevTol</ChannelName>
+              <ChannelName>{channel.name}</ChannelName>
               <Info>{video.views} views • {format(video.createdAt)}</Info>
             </Texts>
           </Details>
