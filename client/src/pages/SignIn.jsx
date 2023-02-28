@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
 
 const Container = styled.div`
   display: flex;
@@ -74,9 +77,11 @@ const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    dispatch(loginStart());
     fetch(requestUrl, {
       method: 'POST',
       body: JSON.stringify({
@@ -90,9 +95,11 @@ const SignIn = () => {
     .then(response => response.json())
     .then(data => {
       console.log(data);
+      dispatch(loginSuccess(data));
     })
     .catch(error => {
       console.log(error);
+      dispatch(loginFailure())
     });
   };
 
