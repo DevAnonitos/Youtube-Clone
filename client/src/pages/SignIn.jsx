@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -66,13 +67,33 @@ const Link = styled.span`
 `;
 
 const SignIn = () => {
+  const proxyUrl = `http://localhost:8000`;
+  const apiUrl = `/api/auth/signin`;
+  const requestUrl = new URL(apiUrl, proxyUrl);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
-
+    e.preventDefault();
+    fetch(requestUrl, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        password: password,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   };
 
   return (
