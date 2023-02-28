@@ -42,4 +42,4 @@ const Home = ({type}) => {
   )
 }
 
-export default Home
+export default Home;

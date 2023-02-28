@@ -30,7 +30,8 @@ const Comments = () => {
   return (
     <Container>
       <NewComment>
-        <Avatar src="https://gstatic.gvn360.com/2022/11/Mat-na_-13-1068x580.jpg"
+        <Avatar
+          src="https://gstatic.gvn360.com/2022/11/Mat-na_-13-1068x580.jpg"
         />
         <Input placeholder="Add a comment..." />
       </NewComment>
