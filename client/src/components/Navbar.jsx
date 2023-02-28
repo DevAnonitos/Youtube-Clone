@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { Link } from "react-router-dom";
 import AddAlertIcon from '@mui/icons-material/AddAlert';
 import SettingsIcon from '@mui/icons-material/Settings';
 import EmergencyRecordingIcon from '@mui/icons-material/EmergencyRecording';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
+
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   position: sticky;
@@ -71,6 +73,11 @@ const Button = styled.button`
   gap: 5px;
 `;
 const Navbar = () => {
+
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const {currentUser} = useSelector((state) => state.user)
   return (
     <Container>
       <Wrapper>
