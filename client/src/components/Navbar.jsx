@@ -7,6 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import EmergencyRecordingIcon from '@mui/icons-material/EmergencyRecording';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
+import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -60,6 +61,15 @@ const Input = styled.input`
   padding: 0px 20px;
 `;
 
+const User = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text};
+  cursor: pointer;
+`;
+
 const Button = styled.button`
   padding: 5px 15px;
   background-color: transparent;
@@ -72,12 +82,22 @@ const Button = styled.button`
   align-items: center;
   gap: 5px;
 `;
+
+const Avatar = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #999;
+  cursor: pointer;
+`;
+
 const Navbar = () => {
 
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
-  const {currentUser} = useSelector((state) => state.user)
+  const {currentUser} = useSelector((state) => state.user);
+
   return (
     <Container>
       <Wrapper>
@@ -122,12 +142,28 @@ const Navbar = () => {
             />
           </Tooltip>
         </Items>
-        <Link to="signin" style={{ textDecoration: "none" }}>
-          <Button>
-            <AccountCircleOutlinedIcon />
-            SIGN IN
-          </Button>
-        </Link>
+        {currentUser ? (
+            <User>
+              <VideoCallOutlinedIcon
+                onClick={() => setOpen(true)}
+              />
+              <Avatar
+                src={currentUser.img}
+                className='border-2 ring-1 border-cyan-500'
+              />
+              {currentUser.name}
+            </User>
+          ) : (
+            <Link
+              to="signin"
+              style={{ textDecoration: "none" }}
+            >
+              <Button>
+                <AccountCircleOutlinedIcon />
+                SIGN IN
+              </Button>
+            </Link>
+          )}
       </Wrapper>
     </Container>
   );
