@@ -4,6 +4,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
+import { auth, provider } from "../firebase";
+import { signInWithPopup } from 'firebase/auth';
 
 const Container = styled.div`
   display: flex;
@@ -103,6 +105,16 @@ const SignIn = () => {
     });
   };
 
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        
+      })
+  };
+
   return (
     <>
       <Container className='mt-10'>
@@ -121,6 +133,8 @@ const SignIn = () => {
             onChange={e => setPassword(e.target.value)}
           />
           <Button onClick={handleLogin}>Sign in</Button>
+          <Title>or</Title>
+          <Button onClick={signInWithGoogle}>Sign in with Google</Button>
           <Title>or</Title>
           <Input
             placeholder="username"
