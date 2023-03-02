@@ -7,6 +7,8 @@ import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from 'firebase/auth';
 
+import axios from 'axios';
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -105,13 +107,20 @@ const SignIn = () => {
     });
   };
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle = async () => {
+    dispatch(loginStart());
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        axios.post("/auth/google", {
+          name: result.user.displayName,
+          email: result.user.email,
+          img: result.user.photoURL,
+        }).then((response) => {
+          dispatch(loginSuccess(response.data));
+        })
       })
       .catch((error) => {
-        
+        console.log(error);
       })
   };
 
