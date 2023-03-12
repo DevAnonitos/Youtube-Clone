@@ -52,7 +52,7 @@ export const signIn = async (req, res, next) => {
 
 export const googleAuth = async (req, res, next) => {
     try {
-        const user = User.findOne({
+        const user = await User.findOne({
             email: req.body.email,
         });
 
@@ -67,7 +67,16 @@ export const googleAuth = async (req, res, next) => {
                 ...req.body,
                 fromGoogle: true,
             });
-        }
+
+            const savedUser = await newUser.save();
+            const token = jwt.sign({ id: savedUser._id }, process.env.JWT);
+
+            res.cookie("access_token", token, {
+                    httpOnly: true,
+            })
+            .status(200)
+            .json(savedUser._doc);
+    }
     } catch (error) {
         next(error);
         console.log(error);

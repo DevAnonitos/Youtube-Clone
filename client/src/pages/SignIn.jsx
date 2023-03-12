@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import axios from "axios";
+// import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
@@ -107,22 +107,22 @@ const SignIn = () => {
     });
   };
 
-  const signInWithGoogle = async () => {
-    dispatch(loginStart());
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        axios.post("/auth/google", {
-          name: result.user.displayName,
-          email: result.user.email,
-          img: result.user.photoURL,
-        }).then((response) => {
-          dispatch(loginSuccess(response.data));
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  };
+  // const signInWithGoogle = async () => {
+  //   dispatch(loginStart());
+  //   // signInWithPopup(auth, provider)
+  //   //   .then((result) => {
+  //   //     axios.post("/auth/google", {
+  //   //       name: result.user.displayName,
+  //   //       email: result.user.email,
+  //   //       img: result.user.photoURL,
+  //   //     }).then((response) => {
+  //   //       dispatch(loginSuccess(response.data));
+  //   //     })
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.log(error);
+  //   //   })
+  // };
 
   return (
     <>
@@ -142,8 +142,6 @@ const SignIn = () => {
             onChange={e => setPassword(e.target.value)}
           />
           <Button onClick={handleLogin}>Sign in</Button>
-          <Title>or</Title>
-          <Button onClick={signInWithGoogle}>Sign in with Google</Button>
           <Title>or</Title>
           <Input
             placeholder="username"
